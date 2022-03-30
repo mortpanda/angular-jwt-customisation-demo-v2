@@ -1,10 +1,10 @@
 <div class="wrapper">
   <div class="page-header section-dark" style="background-image: url('assets/img/lilac_back.png')">
 
-    <div class="mainContainer" fxLayout="columns wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <div class="mainContainer" fxLayout="columns wrap" fxLayoutAlign="center center" fxLayoutGap="15px">
 
-      <div class="containerItems">
-        <div class="testParamHead">Test</div>
+      <div class="configContainer">
+        <div class="testParamHead">Widgetパラメター</div>
         <div>
           <img src="assets/img/okta-japan-small.png" class="paramBanner">
           <div>
@@ -23,7 +23,7 @@
               <div class="form-group">
                 <mat-form-field appearance="legacy" [style.width.px]=400>
                     <mat-label>OpenID ConnectのScope</mat-label>
-                    <input matInput placeholder="テストするScopeを入力してください" input class="form-control"
+                    <input matInput placeholder="openid, email, profile" input class="form-control"
                         id="scope" autocomplete="scope" formControlName="scope" required>
                     <mat-icon matSuffix>code</mat-icon>
                 </mat-form-field>

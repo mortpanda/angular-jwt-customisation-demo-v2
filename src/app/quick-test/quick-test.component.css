@@ -2,7 +2,9 @@
 .mainContainer {
   border-style: dotted;
   width: 90% !important;
-  height: 500px!important;
+  /* height: 500px!important; */
+  margin-top: 50px!important;
+  text-align: center!important;
 }
 
 .containerItems{
@@ -11,6 +13,7 @@
   height:500px!important;
   background: #FFFFFF!important;
   border-radius: 5px!important;
+  box-shadow: 3px 9px 10px -2px #41414b !important;
 }
 
 .testParamHead{
@@ -33,3 +36,12 @@
   margin-bottom: 10px!important;
 }
 
+.configContainer{
+  text-align: center!important;
+  width:500px!important;
+  height:auto!important;
+  background: #FFFFFF!important;
+  border-radius: 5px!important;
+  box-shadow: 3px 9px 10px -2px #41414b !important;
+  margin-bottom: 15px!important;
+}
