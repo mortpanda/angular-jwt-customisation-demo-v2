@@ -8,12 +8,14 @@
 }
 
 .containerItems{
-  text-align: center!important;
+  /* text-align: center!important; */
   width:500px!important;
-  height:500px!important;
+  height:auto!important;
   background: #FFFFFF!important;
   border-radius: 5px!important;
   box-shadow: 3px 9px 10px -2px #41414b !important;
+  padding-top: 15px!important;
+  padding-bottom: 15px!important;
 }
 
 .testParamHead{
@@ -38,7 +40,7 @@
 
 .configContainer{
   text-align: center!important;
-  width:500px!important;
+  width:400px!important;
   height:auto!important;
   background: #FFFFFF!important;
   border-radius: 5px!important;

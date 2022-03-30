@@ -19,7 +19,7 @@ export class OktaWidgetService {
   public oktaSignIn;
   public idToken;
   public LogoutURI = this.OktaConfig.strPostLogoutURL;
-  
+
 
   constructor(private router: Router, private OktaConfig: OktaConfigService) { }
 
@@ -29,10 +29,97 @@ export class OktaWidgetService {
     return authenticated;
   }
 
+  async quickTestClose(clientId, scope) {
+    const OktaClientID = clientId;
+    const OktaBaseURI = this.OktaConfig.strBaseURI;
+    const OktaLang = this.OktaConfig.strLang;
+    const OktaRedirect = this.OktaConfig.strRedirectURL;
+    const OktaBrand = this.OktaConfig.strBrand;
+    const OktaPostlogoutURI = this.OktaConfig.strPostLogoutURL;
+    const OktaIssuer = this.OktaConfig.strIssuer;
+    const OktaScope = scope;
+    const OktaResType = this.OktaConfig.strResponseType;
+    const OktaResMode = this.OktaConfig.strResponseMode;
+    var oktaSignIn = new OktaSignIn({
+      clientId: OktaClientID,
+      baseUrl: OktaBaseURI,
+      language: OktaLang,
+      redirectUri: OktaRedirect,
+      colors: {
+        brand: OktaBrand,
+      },
+      postLogoutRedirectUri: OktaPostlogoutURI,
+      authParams: {
+        issuer: OktaIssuer,
+        responseMode: OktaResMode,
+        responseType: OktaResType,
+        scopes: OktaScope,
+        pkce: false,
+        prompt: OktaResMode
+      },
+    });
+    oktaSignIn.remove();
+
+  }
+
+  async quickTestLogin(clientId, scope, redirecturi) {
+    const OktaClientID = clientId;
+    const OktaBaseURI = this.OktaConfig.strBaseURI;
+    const OktaLang = this.OktaConfig.strLang;
+    const OktaRedirect = redirecturi;
+    const OktaBrand = this.OktaConfig.strBrand;
+    const OktaPostlogoutURI = this.OktaConfig.strPostLogoutURL;
+    const OktaIssuer = this.OktaConfig.strIssuer;
+    const OktaScope = scope;
+    const OktaResType = this.OktaConfig.strResponseType;
+    const OktaResMode = this.OktaConfig.strResponseMode;
+    const OktaWidgetLogo = this.OktaConfig.strLogo;
+    var oktaSignIn = new OktaSignIn({
+      logo: OktaWidgetLogo,
+      clientId: OktaClientID,
+      baseUrl: OktaBaseURI,
+      language: OktaLang,
+      redirectUri: OktaRedirect,
+      colors: {
+        brand: OktaBrand,
+      },
+      postLogoutRedirectUri: OktaPostlogoutURI,
+      authParams: {
+        issuer: OktaIssuer,
+        responseMode: OktaResMode,
+        responseType: OktaResType,
+        scopes: OktaScope,
+        pkce: false,
+        prompt: OktaResMode
+      },
+
+    });
+
+    await oktaSignIn.showSignInToGetTokens({
+      el: '#okta-signin-quicktest'
+    }).then(function (tokens) {
+      console.log("test")
+      oktaSignIn.authClient.tokenManager.setTokens(tokens);
+      oktaSignIn.remove();
+      const idToken = tokens.idToken;
+      localStorage.setItem('okta_jwt_quicktest_2',JSON.stringify(tokens));
+      console.log("Hello, " + idToken.claims.email + "! You just logged in! :)");
+      window.location.replace(OktaRedirect);
+      return true;
+
+    }).catch(function (err) {
+      console.error(err);
+      return false;
+    });
+    //console.log('MFA Status : ' + myMFADone)
+
+  }
+
+
   async login() {
     const OktaClientID = this.OktaConfig.strClientID;
     const OktaBaseURI = this.OktaConfig.strBaseURI;
-    const OktaLang = this.OktaConfig.strLang;  
+    const OktaLang = this.OktaConfig.strLang;
     const OktaRedirect = this.OktaConfig.strRedirectURL;
     const OktaBrand = this.OktaConfig.strBrand;
     const OktaPostlogoutURI = this.OktaConfig.strPostLogoutURL;
@@ -59,7 +146,7 @@ export class OktaWidgetService {
         pkce: false,
         prompt: OktaResMode
       },
-      
+
     });
     console.log(OktaScope)
     await oktaSignIn.showSignInToGetTokens({
@@ -69,7 +156,7 @@ export class OktaWidgetService {
       oktaSignIn.authClient.tokenManager.setTokens(tokens);
       oktaSignIn.remove();
       const idToken = tokens.idToken;
-      localStorage.setItem('okta_jwt_custom_2',JSON.stringify(tokens));
+      localStorage.setItem('okta_jwt_custom_2', JSON.stringify(tokens));
       console.log("Hello, " + idToken.claims.email + "! You just logged in! :)");
       window.location.replace(OktaRedirect);
       return true;
@@ -79,43 +166,45 @@ export class OktaWidgetService {
       return false;
     });
     //console.log('MFA Status : ' + myMFADone)
-    
+
   }
 
-  
- 
-CloseWidget() {
-  const OktaClientID = this.OktaConfig.strClientID;
-  const OktaBaseURI = this.OktaConfig.strBaseURI;
-  const OktaLang = this.OktaConfig.strLang;
-  const OktaRedirect = this.OktaConfig.strRedirectURL;
-  const OktaBrand = this.OktaConfig.strBrand;
-  const OktaPostlogoutURI = this.OktaConfig.strPostLogoutURL;
-  const OktaIssuer = this.OktaConfig.strIssuer;
-  const OktaScope = this.OktaConfig.strScope;
-  const OktaResType = this.OktaConfig.strResponseType;
-  const OktaResMode = this.OktaConfig.strResponseMode;
-  var oktaSignIn = new OktaSignIn({
-    clientId: OktaClientID,
-    baseUrl: OktaBaseURI,
-    language: OktaLang,
-    redirectUri: OktaRedirect,
-    colors: {
-      brand: OktaBrand,
-    },
-    postLogoutRedirectUri: OktaPostlogoutURI,
-    authParams: {
-      issuer: OktaIssuer,
-      responseMode: 'fragment',
-      responseType: OktaResType,
-      scopes: OktaScope,
-      pkce: false,
-      prompt: OktaResMode
-    },
-  });
-  oktaSignIn.remove();
 
-}
+
+  CloseWidget() {
+    const OktaClientID = this.OktaConfig.strClientID;
+    const OktaBaseURI = this.OktaConfig.strBaseURI;
+    const OktaLang = this.OktaConfig.strLang;
+    const OktaRedirect = this.OktaConfig.strRedirectURL;
+    const OktaBrand = this.OktaConfig.strBrand;
+    const OktaPostlogoutURI = this.OktaConfig.strPostLogoutURL;
+    const OktaIssuer = this.OktaConfig.strIssuer;
+    const OktaScope = this.OktaConfig.strScope;
+    const OktaResType = this.OktaConfig.strResponseType;
+    const OktaResMode = this.OktaConfig.strResponseMode;
+    var oktaSignIn = new OktaSignIn({
+      clientId: OktaClientID,
+      baseUrl: OktaBaseURI,
+      language: OktaLang,
+      redirectUri: OktaRedirect,
+      colors: {
+        brand: OktaBrand,
+      },
+      postLogoutRedirectUri: OktaPostlogoutURI,
+      authParams: {
+        issuer: OktaIssuer,
+        responseMode: 'fragment',
+        responseType: OktaResType,
+        scopes: OktaScope,
+        pkce: false,
+        prompt: OktaResMode
+      },
+    });
+    oktaSignIn.remove();
+
+  }
+
+
 
 }
 

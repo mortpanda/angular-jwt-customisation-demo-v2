@@ -116,6 +116,7 @@ export class NavbarComponent implements OnInit {
 
       async Logout(){
         await localStorage.removeItem('okta_jwt_custom_2');
+        await localStorage.removeItem('okta_jwt_quicktest_2')
         await this.OktaSDKAuthService.OktaSDKAuthClient.signOut()
         //   await window.locatkion.replace(this.OktaConfigService.strPostLogoutURL);
       }
