@@ -15,49 +15,44 @@ import { OktaAuth } from '@okta/okta-auth-js'
 })
 export class StartComponent implements OnInit {
   private authService = new OktaAuth(this.OktaSDKAuthService.config);
-  // public thisUser;
-  // public thisToken;
 
-  // public thisAccessToken;
-  // public thisIDToken;
-  // public jsonAccessToken;
+  strUserSession: Boolean;
 
   arrAccessToken;
   arrTokens;
   thisUser;
 
-  // defaultScope;
   constructor(
     public OktaConfigService: OktaConfigService,
     private OktaSDKAuthService: OktaSDKAuthService
   ) { }
 
   async ngOnInit() {
-
-
-    // console.log(this.defaultScope)
-
-    // this.thisUser = await JSON.parse(localStorage.getItem('okta_jwt_custom_2'));
-    // this.thisToken = await JSON.parse(localStorage.getItem('okta_jwt_custom_2'));
-
-    // this.thisAccessToken = await this.thisToken.accessToken;
-    // this.thisIDToken =  await this.thisToken.idToken;
-    // this.jsonAccessToken = await this.thisAccessToken.map(function (obj) {
-    // return obj.id;
-    // });
-    this.arrTokens = await JSON.parse(localStorage.getItem('okta_jwt_custom_2'));
-    console.log(this.arrTokens)
-    this.arrAccessToken = await this.arrTokens.accessToken;
-    this.thisUser = await this.arrAccessToken.claims.sub
-    console.log(this.arrAccessToken)
-
-
+    this.authService.token.getUserInfo()
+      .then(function (user) {
+        console.log(user)
+      })
+    this.strUserSession = await this.authService.session.exists()
+      .then(function (exists) {
+        if (exists) {
+          // logged in
+          return exists
+        } else {
+          // not logged in
+          return exists
+        }
+      });
+    switch (this.strUserSession == true) {
+      case false:
+        await window.location.replace(this.OktaConfigService.strPostLogoutURL);
+      case true:
+        this.arrTokens = await JSON.parse(localStorage.getItem('okta_jwt_custom_2'));
+        console.log(this.arrTokens)
+        this.arrAccessToken = await this.arrTokens.accessToken;
+        this.thisUser = await this.arrAccessToken.claims.sub
+        console.log(this.arrAccessToken)
+        break;
+    }
   }
 
-
-
-
 }
-
-
-//idToken.claims.email

@@ -8,12 +8,12 @@
 
 .fxContainer {
   /*  */
-  border-style: dotted !important;
+  /* border-style: dotted !important; */
   /*  */
   width: 95% !important;
-  height: 500px !important;
+  height: auto !important;
   text-align: center !important;
-  padding-top: 90 !important;
+  margin-top: 90px !important;
   overflow: scroll !important;
 }
 
@@ -57,7 +57,7 @@
   /* border-style: solid !important; */
   /*  */
   width: 650px!important;
-  height:700px!important;  
+  height:auto!important;  
   background-color: #ffffff!important;
   border-radius: 5px!important;
   margin-bottom: 10px!important;
@@ -81,7 +81,7 @@
 .tokenContent{
   /* border-style: solid !important; */
   width: 100%!important;
-  height:500px!important;
+  height:450px!important;
 }
 
 .tokenHead2{
@@ -123,6 +123,8 @@
   font-size: 12px !important;
   padding-top: 20px!important;
   padding-bottom: 20px!important;
+  padding-left: 10px!important;
+  padding-right: 10px!important;
 }
 
 .attributeHead {
@@ -141,7 +143,8 @@
 .tokenAttribute {
   color: #44be92 !important;
   font-weight: 600 !important;
-  width : 5500px!important;
+  width : 550px!important;
+  /* padding-left: 5px!important; */
 }
 
 .indentLevel1 {
@@ -172,24 +175,29 @@
 }
 
 .attExpiry, .customClaim{
-  background: yellowgreen!important;
+  /* background: yellowgreen!important; */
   color: black!important;
   font-weight: 600!important;
+  /* color: red!important; */
+}
+.groups{
+  background: yellowgreen!important;
   color: red!important;
 }
+
 /* #################################### */
 /* #################################### */
 
 
 
-.subContainer {
-  /*  */
+/* .subContainer {
+  
   border-style: dotted !important;
-  /*  */
+  
   width: 100% !important;
-}
+} */
 
-.scopeHead{
+/* .scopeHead{
   background-color: #00297A!important;
   color: #ffffff!important;
   height: 24px!important;
@@ -197,31 +205,31 @@
     "Cantarell", "Helvetica Neue", sans-serif !important;
     border-radius: 5px!important;
     margin: 5px!important;
-}
+} */
 
-.LeftcontainerItem {
-  /*  */
+/* .LeftcontainerItem {
+ 
   border-style: solid !important;
-  /*  */
-  /* width: 90% !important; */
+ 
+ 
   width: 50% !important;
   height: 90px !important;
   margin-bottom: 20px!important;
-  /* padding-top: 10px!important; */
+ 
   border-radius: 5px !important;
   background-color: #ffffff !important;
   box-shadow: 3px 9px 10px -2px #41414b !important;
-}
+} */
 
-.RightcontainerItem {
+/* .RightcontainerItem {
   width: 80% !important;
   height: auto !important;
   border-radius: 5px !important;
   background-color: #ffffff !important;
-  box-shadow: 3px 9px 10px -2px #41414b !important;
-}
+  box-shadow: 3px 9px 10px -2px #41414b !important; 
+}*/
 
-.tokenDiv {
+/* .tokenDiv {
   all: none !important;
   margin-left: 15px !important;
   margin-right: 15px !important;
@@ -235,19 +243,11 @@
   background-color: #d7d7dc !important;
   border-radius: 5px !important;
   font-family: "Lucida Console", "Lucida Sans Typewriter", "monaco", "Bitstream Vera Sans Mono", monospace !important;
-  /* color: #FFFFFF!important;  */
-}
+  
+} */
 
-.RightcontainerItem::-webkit-scrollbar {
-  display: none !important;
-}
-/* Hide the scrollbar byu still allow scroll :  IE, Edge and Firefox */
-.RightcontainerItem {
-  -ms-overflow-style: none !important; /* IE and Edge */
-  scrollbar-width: none !important; /* Firefox */
-}
 
-.rightHead{
+/* .rightHead{
   background-color: #00297A!important;
   height:50px!important;
   border-radius: 5px!important;
@@ -261,4 +261,4 @@
     "Cantarell", "Helvetica Neue", sans-serif !important;
     padding-top: 10px!important;
 }
-
+ */

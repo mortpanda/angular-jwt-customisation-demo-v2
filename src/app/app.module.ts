@@ -44,6 +44,7 @@ import { SamplePageComponent } from './sample-page/sample-page.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StartComponent } from './start/start.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { MainMenuComponent } from './main-menu/main-menu.component';
 
 
 
@@ -56,6 +57,7 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
     LandingComponent,
     SamplePageComponent,
     StartComponent,
+    MainMenuComponent,
     
     
 
