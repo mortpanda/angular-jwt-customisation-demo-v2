@@ -40,11 +40,13 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {LandingComponent} from 'app/landing/landing.component';
 import {FooterComponent} from 'app/shared/footer/footer.component';
-import { LoginComponent } from 'app/login/login.component';
 import { SamplePageComponent } from './sample-page/sample-page.component';
-//import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
+import { StartComponent } from './start/start.component';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
+
+
+
 
 @NgModule({
   declarations: [
@@ -52,10 +54,11 @@ import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
     NavbarComponent,
     FooterComponent,
     LandingComponent,
-    LoginComponent,
     SamplePageComponent,
-    AuthNoticeComponent,
-    //AuthNoticeComponent,
+    StartComponent,
+    
+    
+
    
     
   ],
@@ -95,7 +98,8 @@ import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressBarModule,
-    
+    CommonModule,
+    NgxJsonViewerModule
     
     
   ],

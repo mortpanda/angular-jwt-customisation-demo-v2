@@ -1,0 +1,56 @@
+<div class="wrapper">
+  <div class="page-header section-dark" style="background-image: url('assets/img/turq_dark.png')">
+
+    <div class="fxContainer" fxLayout="row wrap" fxLayoutAlign="center start">
+      <div class="userDiv">{{ this.thisUser.accessToken.claims.sub }}</div>
+      
+      <div class="contentDiv">
+        <div class="tokenContentContainer" fxLayout="columns wrap" fxLayoutAlign="center center" fxLayoutGap="5px">
+          <div class="tokenItem">
+            <div class="tokenInfo" fxLayout="row wrap" fxLayoutAlign="center center">
+              <div class="tokenHead">デフォルトScopeのToken<br />openid, email, profile</div>
+              <div class="tokenContent">Token</div>
+            </div>
+          </div>
+          <div class="tokenItem">
+            <div class="tokenInfo" fxLayout="row wrap" fxLayoutAlign="center center">
+              <!-- <div class="tokenHead2">カスタムScopeのToken<br />openid, email, profile, <a class="customClaim">groups</a></div> -->
+              <div class="tokenHead2">カスタムScopeのToken<br />openid, email, profile, groups</div>
+              <div class="tokenContent">Token</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</div>
+
+
+<!-- <div class="userDiv">{{ this.thisUser.accessToken.claims.sub }}</div>
+
+      
+      <div class="LeftcontainerItem">
+        <div class="scopeHead">OpenID ConnectのScopeを選択してください</div>
+        
+
+
+      </div>
+      <div class="RightcontainerItem">
+        <div class="rightHead">
+          <div class="strRightHead">Access Token</div>
+        </div>
+        <div>
+          <p class="tokenDiv">
+            <ngx-json-viewer [json]="thisAccessToken" [depth]="2"></ngx-json-viewer>
+
+          </p>
+        </div>
+
+      </div> -->

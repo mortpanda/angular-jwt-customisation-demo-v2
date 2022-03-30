@@ -4,9 +4,9 @@ import { OktaSDKAuthService } from '../shared/okta/okta-auth.service';
 import { OktaAuth } from '@okta/okta-auth-js'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OktaConfigService } from "app/shared/okta/okta-config.service";
-import { OktaGetTokenService } from 'app/shared/okta/okta-get-token.service';
+// import { OktaGetTokenService } from 'app/shared/okta/okta-get-token.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AuthNoticeComponent } from 'app/auth-notice/auth-notice.component';
+// import { AuthNoticeComponent } from 'app/auth-notice/auth-notice.component';
 
 @Component({
   selector: 'app-sample-page',
@@ -19,19 +19,20 @@ export class SamplePageComponent implements OnInit {
   public authService = new OktaAuth(this.OktaSDKAuthService.config);
   durationInSeconds = 5;
 
-  constructor(public OktaGetTokenService: OktaGetTokenService,
+  constructor(
+    // public OktaGetTokenService: OktaGetTokenService,
     public OktaSDKAuthService: OktaSDKAuthService,
     public _snackBar: MatSnackBar
   ) { }
 
-  NotAuthed() {
-    this._snackBar.openFromComponent(AuthNoticeComponent,
-      {
-        duration: this.durationInSeconds * 1000,
-        horizontalPosition: 'center',
+  // NotAuthed() {
+  //   this._snackBar.openFromComponent(AuthNoticeComponent,
+  //     {
+  //       duration: this.durationInSeconds * 1000,
+  //       horizontalPosition: 'center',
 
-      });
-  }
+  //     });
+  // }
 
 
   async ngOnInit() {
@@ -54,10 +55,10 @@ export class SamplePageComponent implements OnInit {
       case false:
         //alert(this.oktaSDKAuth.config.redirectUri)
         // alert('ログインしてください')
-        await this.NotAuthed();
+        // await this.NotAuthed();
         await window.location.replace('/');
       case true:
-        this.OktaGetTokenService.GetAccessToken();
+        // this.OktaGetTokenService.GetAccessToken();
         break;
 
     }
