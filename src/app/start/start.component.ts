@@ -3,9 +3,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ViewEncapsulation } from '@angular/core';
 
 import { MatSelectModule, MatSelectChange } from '@angular/material/select';
-import{OktaConfigService} from 'app/shared/okta/okta-config.service';
+import { OktaConfigService } from 'app/shared/okta/okta-config.service';
 import { OktaSDKAuthService } from '../shared/okta/okta-auth.service';
-import { OktaAuth} from '@okta/okta-auth-js'
+import { OktaAuth } from '@okta/okta-auth-js'
 
 @Component({
   selector: 'app-start',
@@ -15,38 +15,47 @@ import { OktaAuth} from '@okta/okta-auth-js'
 })
 export class StartComponent implements OnInit {
   private authService = new OktaAuth(this.OktaSDKAuthService.config);
-  public thisUser;
-  public thisToken;
+  // public thisUser;
+  // public thisToken;
 
-  public thisAccessToken;
-  public thisIDToken;
-  public jsonAccessToken;
+  // public thisAccessToken;
+  // public thisIDToken;
+  // public jsonAccessToken;
 
+  arrAccessToken;
+  arrTokens;
+  thisUser;
 
-  
-  defaultScope;
+  // defaultScope;
   constructor(
-    public OktaConfigService:OktaConfigService,
+    public OktaConfigService: OktaConfigService,
     private OktaSDKAuthService: OktaSDKAuthService
   ) { }
 
   async ngOnInit() {
 
 
-    console.log(this.defaultScope)
+    // console.log(this.defaultScope)
 
-    this.thisUser = await JSON.parse(localStorage.getItem('okta_jwt_custom_2'));
-    this.thisToken = await JSON.parse(localStorage.getItem('okta_jwt_custom_2'));
+    // this.thisUser = await JSON.parse(localStorage.getItem('okta_jwt_custom_2'));
+    // this.thisToken = await JSON.parse(localStorage.getItem('okta_jwt_custom_2'));
 
-    this.thisAccessToken = await this.thisToken.accessToken;
-    this.thisIDToken =  await this.thisToken.idToken;
-    this.jsonAccessToken = await this.thisAccessToken.map(function (obj) {
-      // return obj.id;
-    });
+    // this.thisAccessToken = await this.thisToken.accessToken;
+    // this.thisIDToken =  await this.thisToken.idToken;
+    // this.jsonAccessToken = await this.thisAccessToken.map(function (obj) {
+    // return obj.id;
+    // });
+    this.arrTokens = await JSON.parse(localStorage.getItem('okta_jwt_custom_2'));
+    console.log(this.arrTokens)
+    this.arrAccessToken = await this.arrTokens.accessToken;
+    this.thisUser = await this.arrAccessToken.claims.sub
+    console.log(this.arrAccessToken)
+
+
   }
 
 
-  
+
 
 }
 

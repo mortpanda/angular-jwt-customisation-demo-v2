@@ -61,6 +61,7 @@
   background-color: #ffffff!important;
   border-radius: 5px!important;
   margin-bottom: 10px!important;
+  box-shadow: 3px 9px 10px -2px #41414b !important;
 }
 
 .tokenHead{
@@ -104,6 +105,78 @@
   padding-right: 5px!important;
 }
 
+.strToken {
+  border-radius: 5px !important;
+  /* width: 100%!important; */
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+  margin-top: 15px !important;
+  word-wrap: normal !important;
+  background-color: black !important;
+}
+.jsonJWT {
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  text-align: left !important;
+  font-family: "Lucida Console", "Lucida Sans Typewriter", "monaco", "Bitstream Vera Sans Mono", monospace !important;
+  font-size: 12px !important;
+  padding-top: 20px!important;
+  padding-bottom: 20px!important;
+}
+
+.attributeHead {
+  color: #44abbe !important;
+  font-weight: 600 !important;
+  min-width : 60px!important;
+  margin-left: 5px!important;
+}
+
+.jwtcolon {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  width : 100px!important;
+}
+
+.tokenAttribute {
+  color: #44be92 !important;
+  font-weight: 600 !important;
+  width : 5500px!important;
+}
+
+.indentLevel1 {
+  padding-left:1em!important;
+	text-indent:-1em!important;
+  /* padding-left: 15px!important; */
+
+}
+
+.indentLevel2{
+  padding-left:2em!important;
+	text-indent:-2em!important;
+  /* padding-left: 25px!important; */
+}
+
+.indentLeve3{
+  padding-left:3em;
+	text-indent:-3em;
+}
+
+.indentLeve4{
+  padding-left:3em;
+	text-indent:-3em;
+}
+
+.integerAtt{
+  color: #B144BE!important;
+}
+
+.attExpiry, .customClaim{
+  background: yellowgreen!important;
+  color: black!important;
+  font-weight: 600!important;
+  color: red!important;
+}
 /* #################################### */
 /* #################################### */
 
