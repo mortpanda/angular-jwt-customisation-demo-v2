@@ -1,0 +1,46 @@
+<div class="wrapper">
+  <div class="page-header section-dark" style="background-image: url('assets/img/lilac_back.png')">
+
+    <div class="mainContainer" fxLayout="columns wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+
+      <div class="containerItems">
+        <div class="testParamHead">Test</div>
+        <div>
+          <img src="assets/img/okta-japan-small.png" class="paramBanner">
+          <div>
+            <!--  -->
+            <form [formGroup]="widgetParamForm" (ngSubmit)="onSubmit()" id="widgetParamForm">
+              <p *ngIf="loginInvalid" class="form_login">
+              </p>
+              <div class="form-group">
+                  <mat-form-field appearance="legacy" [style.width.px]=400>
+                      <mat-label>アプリのClient ID</mat-label>
+                      <input matInput placeholder="Client IDを入力してください" cdkFocusInitial input class="form-control"
+                          id="clientId" autocomplete="clientId" formControlName="clientId" required>
+                      <mat-icon matSuffix>apps</mat-icon>
+                  </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field appearance="legacy" [style.width.px]=400>
+                    <mat-label>OpenID ConnectのScope</mat-label>
+                    <input matInput placeholder="テストするScopeを入力してください" input class="form-control"
+                        id="scope" autocomplete="scope" formControlName="scope" required>
+                    <mat-icon matSuffix>code</mat-icon>
+                </mat-form-field>
+            </div>
+              <button id="modal-login-button" type="submit" class="btn btn-primary mt-4 mb-3">ログイン</button>
+          </form>
+            <!--  -->
+          </div>
+
+        </div>
+      </div>
+
+      <div class="containerItems">
+        <app-quick-test-widget></app-quick-test-widget>
+      </div>
+
+    </div>
+    <div class="main">
+    </div>
+  </div>

@@ -45,6 +45,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { StartComponent } from './start/start.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { MainMenuComponent } from './main-menu/main-menu.component';
+import { QuickTestComponent } from './quick-test/quick-test.component';
+import { QuickTestWidgetComponent } from './quick-test-widget/quick-test-widget.component';
 
 
 
@@ -58,6 +60,8 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
     SamplePageComponent,
     StartComponent,
     MainMenuComponent,
+    QuickTestComponent,
+    QuickTestWidgetComponent,
     
     
 
