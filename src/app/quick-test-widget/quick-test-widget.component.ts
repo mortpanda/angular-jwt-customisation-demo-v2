@@ -11,7 +11,7 @@ import { OktaConfigService } from "app/shared/okta/okta-config.service";
   encapsulation: ViewEncapsulation.None
 })
 export class QuickTestWidgetComponent implements OnInit {
-
+  
   constructor(
     public OktaWidgetService:OktaWidgetService,
     private OktaConfig: OktaConfigService,

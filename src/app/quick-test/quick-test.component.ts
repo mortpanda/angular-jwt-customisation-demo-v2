@@ -12,6 +12,10 @@ import { OktaConfigService } from "app/shared/okta/okta-config.service";
 })
 export class QuickTestComponent implements OnInit {
   widgetParamForm: FormGroup;
+  
+  quicktest_tokens:boolean;
+  // quicktest_tokens=false;
+  
   constructor(
     private fb: FormBuilder,
     public OktaWidgetService: OktaWidgetService,
@@ -19,19 +23,15 @@ export class QuickTestComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-
-
+    this.quicktest_tokens = true;
+    console.log(this.quicktest_tokens)
     this.strNewClientId = this.OktaConfig.strClientID;
-
-
     this.widgetParamForm = this.fb.group({
       clientId: ["0oa3cto3fn6n2yrNr1d7", Validators.required],
       //scope: ["", Validators.required]
       scope: ["openid, email, profile, address, groups", Validators.required]
     });
-
     // await this.OktaWidgetService.quickTestLogin(this.OktaConfig.strClientID, this.OktaConfig.strScope, this.OktaConfig.testSIWRedirect);
-
     // console.log(this.widgetParamForm.get("scope").value)
   }
 
