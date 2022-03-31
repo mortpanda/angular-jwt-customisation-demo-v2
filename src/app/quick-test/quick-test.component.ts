@@ -38,7 +38,7 @@ strQuickTestTokens;
       }
       default: {
         this.quickTestflag = true;
-        this.strQuickTestTokens = JSON.stringify(this.quickTestTokens);
+        this.strQuickTestTokens = this.quickTestTokens;
         break;
       }
     }
@@ -76,6 +76,10 @@ strQuickTestTokens;
     // console.log(this.arrScopes);
     await this.OktaWidgetService.quickTestClose( this.OktaConfig.strScope);
     await this.OktaWidgetService.quickTestLogin( this.arrScopes, this.OktaConfig.testSIWRedirect);
+  }
+
+  Reset(){
+
   }
 
 }

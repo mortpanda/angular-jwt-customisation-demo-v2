@@ -29,6 +29,8 @@
                   <mat-icon matSuffix>code</mat-icon>
                 </mat-form-field>
               </div>
+              <a class="btn btn-reg-danger btn-round" class="btn btn-danger btn-round btnSetting" id="logout"
+                (click)="Reset()">設定の初期化</a>
               <button id="modal-login-button" type="submit" class="btn btn-reg-danger btn-round"
                 class="btn btn-danger btn-round btnSetting">設定の適応</button>
             </form>
@@ -38,14 +40,23 @@
         </div>
       </div>
 
-      <div class="containerItems">
+      <div class="containerTokenItems">
         <div *ngIf="quickTestflag; else notShow">
-          {{ strQuickTestTokens }}
-        </div> 
+          <div class="testParamHead">
+            Tokenの内容
+          </div>
+          <div class="quickTokenDiv">
+            <!-- {{ strQuickTestTokens }} -->
+            <p class="tokenDiv">
+              <ngx-json-viewer [json]="strQuickTestTokens" [depth]="1"></ngx-json-viewer>
+
+            </p>
+          </div>
+        </div>
         <ng-template #notShow>
-          
+
           <app-quick-test-widget></app-quick-test-widget>
-          
+
         </ng-template>
       </div>
 

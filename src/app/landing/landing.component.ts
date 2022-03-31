@@ -18,7 +18,7 @@ export class LandingComponent implements OnInit {
 
   async ngOnInit()  {
     this.OktaWidgetService.CloseWidget();
-    
+    localStorage.removeItem('okta_jwt_quicktest_2');
     this.strUserSession = await this.authService.session.exists()
       .then(function (exists) {
         if (exists) {
