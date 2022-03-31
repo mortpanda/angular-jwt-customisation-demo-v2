@@ -47,6 +47,7 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { QuickTestComponent } from './quick-test/quick-test.component';
 import { QuickTestWidgetComponent } from './quick-test-widget/quick-test-widget.component';
+import { ConfigChangedComponent } from './config-changed/config-changed.component';
 // import { QuickTestwidgetComponent } from './quick-testwidget/quick-testwidget.component';
 
 
@@ -63,6 +64,7 @@ import { QuickTestWidgetComponent } from './quick-test-widget/quick-test-widget.
     MainMenuComponent,
     QuickTestComponent,
     QuickTestWidgetComponent,
+    ConfigChangedComponent,
     // QuickTestwidgetComponent,
     
     

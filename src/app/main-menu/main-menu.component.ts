@@ -22,6 +22,7 @@ export class MainMenuComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    localStorage.removeItem('okta_jwt_quicktest_2');
     this.authService.token.getUserInfo()
       .then(function (user) {
         console.log(user)

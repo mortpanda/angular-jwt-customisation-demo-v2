@@ -3,6 +3,8 @@ import { ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { OktaWidgetService } from 'app/shared/okta/okta-widget.service';
 import { OktaConfigService } from "app/shared/okta/okta-config.service";
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {ConfigChangedComponent} from 'app/config-changed/config-changed.component';
 
 @Component({
   selector: 'app-quick-test',
@@ -15,13 +17,25 @@ export class QuickTestComponent implements OnInit {
   quicktest_tokens: boolean = false;
   quickTestflag;
   quickTestTokens;
+  ConfigChanged;
   // defaultScope=["openid, email, profile, address, groups"]
 
   constructor(
     private fb: FormBuilder,
     public OktaWidgetService: OktaWidgetService,
     private OktaConfig: OktaConfigService,
+    public _snackBar: MatSnackBar
   ) { }
+
+  durationInSeconds = 1;
+  ConfigChangedSnack() {
+    this._snackBar.openFromComponent(ConfigChangedComponent,
+      {
+        duration: this.durationInSeconds * 1000,
+        horizontalPosition: 'center',
+
+      });
+  }
 
   strQuickTestTokens;
   strReloadFlag;
@@ -72,13 +86,10 @@ export class QuickTestComponent implements OnInit {
   strScope;
   arrScopes = [];
   async ScopeUpdated(event) {
-
     // console.log("New scope is : ", event.target.value);
     // this.strScope = event.target.value;
     this.scopeToArray(event.target.value);
     // console.log(this.arrScopes);
-
-
   }
 
   // strNewClientId;
@@ -87,17 +98,18 @@ export class QuickTestComponent implements OnInit {
   //   this.strNewClientId = event.target.value;
   // }
 
+  
+
   async onSubmit() {
     this.quickTestflag = false;
-
+    // alert(this.arrScopes);
+    this.ConfigChangedSnack();
     console.log('Submit clicked')
-
     await localStorage.removeItem('okta_jwt_quicktest_2')
     await this.OktaWidgetService.quickTestClose(this.OktaConfig.strScope);
     await this.OktaWidgetService.quickTestLogin(this.arrScopes, this.OktaConfig.testSIWRedirect);
-    //applySetting
-
-
+    
+  
   }
 
   async Reset() {
