@@ -12,55 +12,71 @@ import { OktaConfigService } from "app/shared/okta/okta-config.service";
 })
 export class QuickTestComponent implements OnInit {
   widgetParamForm: FormGroup;
-  
-  quicktest_tokens:boolean;
-  // quicktest_tokens=false;
-  
+  quicktest_tokens: boolean = false;
+  quickTestflag;
+  quickTestTokens;
+
   constructor(
     private fb: FormBuilder,
     public OktaWidgetService: OktaWidgetService,
     private OktaConfig: OktaConfigService,
   ) { }
 
+strQuickTestTokens;
   async ngOnInit() {
-    this.quicktest_tokens = true;
-    console.log(this.quicktest_tokens)
-    this.strNewClientId = this.OktaConfig.strClientID;
     this.widgetParamForm = this.fb.group({
-      clientId: ["0oa3cto3fn6n2yrNr1d7", Validators.required],
-      //scope: ["", Validators.required]
+
       scope: ["openid, email, profile, address, groups", Validators.required]
     });
-    // await this.OktaWidgetService.quickTestLogin(this.OktaConfig.strClientID, this.OktaConfig.strScope, this.OktaConfig.testSIWRedirect);
-    // console.log(this.widgetParamForm.get("scope").value)
+    this.quickTestTokens = JSON.parse(localStorage.getItem('okta_jwt_quicktest_2'));
+    console.log(this.quickTestTokens)
+
+    switch (this.quickTestTokens) {
+      case null: {
+        this.quickTestflag = false;
+        break;
+      }
+      default: {
+        this.quickTestflag = true;
+        this.strQuickTestTokens = JSON.stringify(this.quickTestTokens);
+        break;
+      }
+    }
+
+  }
+
+  scopeToArray(scope) {
+    scope = scope.split(',')
+    for (var i = 0; i < scope.length; i++) {
+      var strScope
+      strScope = scope[i].replace(/\s/g, "");
+      this.arrScopes[i] = strScope;
+    }
+    console.log(this.arrScopes)
   }
 
   strScope;
   arrScopes = [];
   async ScopeUpdated(event) {
     // console.log("New scope is : ", event.target.value);
-    this.strScope = event.target.value;
-    this.strScope = this.strScope.split(',')
-    for (var i = 0; i < this.strScope.length; i++) {
-      var strScope
-      strScope = this.strScope[i].replace(/\s/g, "");
-      this.arrScopes[i] = strScope;
-    }
-    console.log(this.arrScopes);
+    // this.strScope = event.target.value;
+    this.scopeToArray(event.target.value);
+    // console.log(this.arrScopes);
 
   }
 
-  strNewClientId;
-  ClientIdUpdated(event) {
-    console.log("New Client ID is : ", event.target.value);
-    this.strNewClientId = event.target.value;
-  }
+  // strNewClientId;
+  // ClientIdUpdated(event) {
+  //   console.log("New Client ID is : ", event.target.value);
+  //   this.strNewClientId = event.target.value;
+  // }
 
   async onSubmit() {
     console.log('Submit clicked')
-    console.log(this.strScope);
-    this.OktaWidgetService.quickTestClose(this.OktaConfig.strClientID, this.OktaConfig.strScope);
-    this.OktaWidgetService.quickTestLogin(this.strNewClientId, this.strScope, this.OktaConfig.testSIWRedirect);
+    // console.log(this.arrScopes);
+    await this.OktaWidgetService.quickTestClose( this.OktaConfig.strScope);
+    await this.OktaWidgetService.quickTestLogin( this.arrScopes, this.OktaConfig.testSIWRedirect);
   }
 
 }
+

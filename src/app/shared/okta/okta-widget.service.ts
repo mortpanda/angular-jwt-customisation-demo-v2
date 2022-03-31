@@ -6,6 +6,7 @@ import OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 import { OktaConfigService } from "./okta-config.service";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,9 +20,15 @@ export class OktaWidgetService {
   public oktaSignIn;
   public idToken;
   public LogoutURI = this.OktaConfig.strPostLogoutURL;
+  
+  quickTestTokens;
 
 
-  constructor(private router: Router, private OktaConfig: OktaConfigService) { }
+  constructor(
+    private router: Router,
+     private OktaConfig: OktaConfigService,
+     
+     ) { }
 
   async checkAuthenticated() {
     const authenticated = await this.authClient.session.exists();
@@ -29,8 +36,8 @@ export class OktaWidgetService {
     return authenticated;
   }
 
-  async quickTestClose(clientId, scope) {
-    const OktaClientID = clientId;
+  async quickTestClose( scope) {
+    const OktaClientID = this.OktaConfig.strClientID;
     const OktaBaseURI = this.OktaConfig.strBaseURI;
     const OktaLang = this.OktaConfig.strLang;
     const OktaRedirect = this.OktaConfig.strRedirectURL;
@@ -62,8 +69,10 @@ export class OktaWidgetService {
 
   }
 
-  async quickTestLogin(clientId, scope, redirecturi) {
-    const OktaClientID = clientId;
+  
+  
+  async quickTestLogin( scope, redirecturi) {
+    const OktaClientID = this.OktaConfig.strClientID;
     const OktaBaseURI = this.OktaConfig.strBaseURI;
     const OktaLang = this.OktaConfig.strLang;
     const OktaRedirect = redirecturi;
@@ -95,23 +104,27 @@ export class OktaWidgetService {
 
     });
 
-    await oktaSignIn.showSignInToGetTokens({
+    this.quickTestTokens = await oktaSignIn.showSignInToGetTokens({
       el: '#okta-signin-quicktest'
     }).then(function (tokens) {
-      console.log("test")
+      // localStorage.removeItem('okta_jwt_quicktest');
       oktaSignIn.authClient.tokenManager.setTokens(tokens);
       oktaSignIn.remove();
       const idToken = tokens.idToken;
       localStorage.setItem('okta_jwt_quicktest_2',JSON.stringify(tokens));
+      
       console.log("Hello, " + idToken.claims.email + "! You just logged in! :)");
+      
       window.location.replace(OktaRedirect);
-      return true;
+            // return true;
+            
+      return tokens;
 
     }).catch(function (err) {
       console.error(err);
       return false;
     });
-    //console.log('MFA Status : ' + myMFADone)
+      console.log(this.quickTestTokens)
 
   }
 
