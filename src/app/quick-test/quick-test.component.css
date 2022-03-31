@@ -100,8 +100,19 @@
 }
 
 .tokenDiv {
-  background: black !important;
+  background: #D7D7DC !important;
   color: #ffffff !important;
   margin: 5px!important;
   border-radius: 5px!important;
+}
+
+.widgetDiv{
+  margin-top: 15px!important;
+}
+.buttons{
+  text-align: center!important;
+}
+
+#okta-sign-in.auth-container.main-container{
+  box-shadow: 3px 9px 10px -2px #41414b !important;
 }

@@ -36,7 +36,7 @@ export class OktaWidgetService {
     return authenticated;
   }
 
-  async quickTestClose( scope) {
+  async quickTestClose(scope) {
     const OktaClientID = this.OktaConfig.strClientID;
     const OktaBaseURI = this.OktaConfig.strBaseURI;
     const OktaLang = this.OktaConfig.strLang;

@@ -18,7 +18,7 @@ export class QuickTestWidgetComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    await this.OktaWidgetService.quickTestLogin( this.OktaConfig.strScope, this.OktaConfig.testSIWRedirect);
+    // await this.OktaWidgetService.quickTestLogin( this.OktaConfig.strScope, this.OktaConfig.testSIWRedirect);
    
   }
 
