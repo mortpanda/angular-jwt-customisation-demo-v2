@@ -40,7 +40,6 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {LandingComponent} from 'app/landing/landing.component';
 import {FooterComponent} from 'app/shared/footer/footer.component';
-import { SamplePageComponent } from './sample-page/sample-page.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StartComponent } from './start/start.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
@@ -59,17 +58,11 @@ import { ConfigChangedComponent } from './config-changed/config-changed.componen
     NavbarComponent,
     FooterComponent,
     LandingComponent,
-    SamplePageComponent,
     StartComponent,
     MainMenuComponent,
     QuickTestComponent,
     QuickTestWidgetComponent,
     ConfigChangedComponent,
-    // QuickTestwidgetComponent,
-    
-    
-
-   
     
   ],
   imports: [

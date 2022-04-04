@@ -18,7 +18,6 @@ export class QuickTestComponent implements OnInit {
   quickTestflag;
   quickTestTokens;
   ConfigChanged;
-  // defaultScope=["openid, email, profile, address, groups"]
 
   constructor(
     private fb: FormBuilder,
